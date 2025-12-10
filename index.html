@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stratosvario_box: A Vanguarda da Decisão em Voo Livre</title>
+    <title>Stratosvario - Linha de Produtos</title>
     <style>
         :root {
             --primary-color: #007BFF;
@@ -12,6 +12,7 @@
             --background-dark: #333;
             --text-light: #fff;
             --text-dark: #333;
+            --card-border: #e0e0e0;
         }
 
         body {
@@ -23,15 +24,20 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 20px;
         }
+
+        .hidden { display: none; }
+        
+        /* --- HERO --- */
         .hero {
             background-color: var(--primary-color);
             color: var(--text-light);
-            padding: 80px 20px;
+            padding: 60px 20px 100px 20px;
             text-align: center;
+            position: relative;
         }
 
         .hero h1 {
@@ -41,143 +47,332 @@
         }
         .hero p {
             font-size: 1.2em;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             opacity: 0.9;
         }
 
-        .hero-highlight {
-            font-size: 1.5em;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 30px;
-            padding: 10px;
-            background-color: var(--secondary-color);
-            border-radius: 5px;
-            color: var(--text-light);
-        }
-
-        .btn-cta {
-            background-color: #28a745;
-            color: var(--text-light);
-            padding: 15px 30px;
-            text-decoration: none;
-            font-size: 1.2em;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: background-color 0.3s;
-        }
-
-        .btn-cta:hover {
-            background-color: #1e7e34;
-        }
-
-        .section {
-            padding: 60px 20px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .section:nth-child(even) {
-            background-color: var(--background-light);
-        }
-
-        .section h2 {
-            font-size: 2em;
-            color: var(--primary-color);
-            margin-bottom: 40px;
-            text-align: center;
-            border-bottom: 2px solid var(--primary-color);
-            display: inline-block;
-            padding-bottom: 5px;
-            width: 100%;
-        }
-
-        .feature-box {
+        /* --- VITRINE DE PRODUTOS --- */
+        .products-showcase {
             display: flex;
-            gap: 30px;
-            margin-top: 20px;
+            justify-content: center;
+            gap: 20px;
             flex-wrap: wrap;
-            align-items: stretch;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+            padding-bottom: 40px;
         }
 
-        .feature-item {
-            flex: 1;
-            min-width: 250px;
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            width: 300px;
             padding: 20px;
-            background-color: #fff;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .feature-item h3 {
-            color: var(--secondary-color);
-            margin-top: 0;
-        }
-        
-        .image-placeholder {
             text-align: center;
-            margin: 40px 0;
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image-box {
+            width: 100%;
+            height: 200px;
             background-color: #eee;
             border-radius: 8px;
-            border: 2px dashed #ccc;
-        }
-        
-        .demo-section {
-            background-color: #e0f7fa;
-        }
-        .demo-item {
-            background-color: #fff; 
-            border-color: var(--primary-color); 
-            border-width: 2px; 
-            border-style: solid;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid #ddd;
         }
 
-
-        .specs-table {
+        .product-image-box img {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .specs-table th, .specs-table td {
-            border: 1px solid #ccc;
-            padding: 12px;
-            text-align: left;
+        .product-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin: 10px 0;
         }
 
-        .specs-table th {
+        .product-price {
+            font-size: 1.8em;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+
+        .btn-buy-sm {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-buy-sm:hover { background-color: #218838; }
+
+        .btn-info-sm {
+            display: inline-block;
             background-color: var(--primary-color);
-            color: var(--text-light);
-            width: 30%;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            border: none;
+            cursor: pointer;
         }
 
-        .cta-final {
-            text-align: center;
-            padding: 50px 20px;
-            background-color: var(--background-dark);
-            color: var(--text-light);
+        /* --- NAV BAR --- */
+        .nav-bar {
+            background-color: #eee;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ccc;
         }
+        .btn-back {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .btn-back:before { content: "← "; margin-right: 5px; font-size: 1.2em; }
 
-        .cta-final h2 {
-            color: #ffe400; 
-            border-bottom: none;
+        /* --- GERAIS --- */
+        .section { padding: 60px 20px; border-bottom: 1px solid #ddd; }
+        .section:nth-child(even) { background-color: var(--background-light); }
+        .section h2 {
+            font-size: 2em; color: var(--primary-color); margin-bottom: 40px; text-align: center;
+            border-bottom: 2px solid var(--primary-color); display: inline-block; padding-bottom: 5px; width: 100%;
+        }
+        .feature-box { display: flex; gap: 30px; margin-top: 20px; flex-wrap: wrap; align-items: stretch; justify-content: center; }
+        .feature-item {
+            flex: 1; min-width: 250px; padding: 20px; background-color: #fff;
+            border: 1px solid #eee; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        .feature-item h3 { color: var(--secondary-color); margin-top: 0; }
+        .image-placeholder {
+            text-align: center; margin: 40px 0; padding: 20px;
+            background-color: #fff; border-radius: 8px; border: 1px solid #ccc;
+        }
+        .demo-section { background-color: #e0f7fa; }
+        .demo-item { background-color: #fff; border: 2px solid var(--primary-color); text-align: center; }
+        .specs-table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+        .specs-table th, .specs-table td { border: 1px solid #ccc; padding: 12px; text-align: left; }
+        .specs-table th { background-color: var(--primary-color); color: var(--text-light); width: 30%; }
+        .cta-final { text-align: center; padding: 50px 20px; background-color: var(--background-dark); color: var(--text-light); }
+        .cta-final h2 { color: #ffe400; border-bottom: none; }
+        .btn-cta {
+            background-color: #28a745; color: var(--text-light); padding: 15px 30px;
+            text-decoration: none; font-size: 1.2em; font-weight: bold; border-radius: 8px; transition: background-color 0.3s;
+        }
+        .hero-highlight {
+            font-size: 1.5em; font-weight: bold; display: block; margin-bottom: 30px;
+            padding: 10px; background-color: var(--secondary-color); border-radius: 5px; color: var(--text-light);
         }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="container">
-            <h1>Stratosvario_box: A Vanguarda da Decisão em Voo Livre.</h1>
-            <p>Chegou a hora de voar com a precisão que só a inteligência artificial e o baixo ruído podem oferecer.</p>
-            <span class="hero-highlight">0% Ruído. 100% Confiança. Filtro StratosSense AI Ativo.</span>
-            <a href="#buy" class="btn-cta">Comprar Agora / Reserve o Seu</a>
-        </div>
-    </header>
+    <!-- =============================================
+         PÁGINA INICIAL (VITRINE)
+    ============================================== -->
+    <div id="page-home">
+        
+        <header class="hero">
+            <div class="container">
+                <h1>Stratosvario: A Vanguarda da Decisão em Voo Livre.</h1>
+                <p>Chegou a hora de voar com a precisão que só a inteligência artificial e o baixo ruído podem oferecer.</p>
+                <span class="hero-highlight" style="font-size: 1em; background-color: rgba(255,255,255,0.2); border: 1px solid white;">0% Ruído. 100% Confiança. Filtro StratosSense AI Ativo.</span>
+            </div>
+        </header>
 
-    <main>
-        <section class="section" id="product-gallery" style="padding-top: 30px; padding-bottom: 30px; background-color: #fff;">
+        <div class="container">
+            <div class="products-showcase">
+                
+                <!-- 1. CARD BOX -->
+                <div class="product-card" style="border: 2px solid var(--primary-color);" onclick="goToProduct('box')">
+                    <div>
+                        <div class="product-image-box">
+                            <img src="foto1.png" alt="Stratosvario Box"> 
+                        </div>
+                        <h3 class="product-title">Stratosvario Box</h3>
+                        <p style="font-size: 0.9em; color: #666;">Compacto, modular e com Inteligência Artificial.</p>
+                    </div>
+                    <div>
+                        <div class="product-price">R$ 499,00</div>
+                        <button class="btn-buy-sm">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <!-- 2. CARD PRO -->
+                <div class="product-card" onclick="goToProduct('pro')">
+                    <div>
+                        <div class="product-image-box">
+                            <img src="stratosvario_pro_foto1.jpg" alt="Stratosvario Pro">
+                        </div>
+                        <h3 class="product-title">Stratosvario Pro</h3>
+                        <p style="font-size: 0.9em; color: #666;">Sistema integrado com Tablet e Rastreamento 4G.</p>
+                    </div>
+                    <div>
+                        <div class="product-price">R$ 1.490,00</div>
+                        <button class="btn-info-sm">Ver Detalhes</button>
+                    </div>
+                </div>
+
+                <!-- 3. CARD KIT PRO -->
+                <div class="product-card" onclick="goToProduct('kit')">
+                    <div>
+                        <div class="product-image-box">
+                            <img src="stratosvario_kit_pro_foto1.jpg" alt="Stratosvario KIT Pro">
+                        </div>
+                        <h3 class="product-title">Stratosvario KIT Pro</h3>
+                        <p style="font-size: 0.9em; color: #666;">Monte você mesmo. Para usar com seu próprio tablet.</p>
+                    </div>
+                    <div>
+                        <div class="product-price">R$ 699,00</div> 
+                        <button class="btn-info-sm" style="background-color: #666;">Ver Kit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARACTERÍSTICAS GERAIS DA LINHA -->
+        <section class="section">
+            <div class="container">
+                <h2>🧠 RECURSO CENTRAL: O FILTRO STRATOSSENSE AI & COCHLEAR</h2>
+                <p style="font-size: 1.1em; line-height: 1.6;">
+                    Desenhado para eliminar o ruído turbulento de borda de térmica e a trepidação, toda a linha Stratosvario utiliza um algoritmo de **Inteligência Artificial (AI) proprietário** que atua como um filtro adaptativo.
+                </p>
+                
+                <!-- GRÁFICO COMPARATIVO -->
+                <div class="image-placeholder" style="border: none; background: transparent; padding: 0;">
+                     <img src="grafico_comparativo.png" alt="Gráfico Comparativo: Linha Suja (BMP280) vs. Linha Limpa (DPS310 + AI)" style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-item">
+                        <h3>Filtro Coclear (Tecnologia Exclusiva)</h3>
+                        <p>O Filtro Coclear simula o processamento do ouvido humano. Enquanto variômetros comuns adicionam mais de 1.2 segundos de lag, nossa abordagem garante resposta quase instantânea, com lag **inferior a 0.02 segundos**.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Adaptação Dinâmica</h3>
+                        <p>O StratosSense AI analisa a turbulência e adapta a suavização. Garante máxima sensibilidade no ar calmo e estabilidade no núcleo da térmica.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Modo Profissional</h3>
+                        <p>Mantenha o filtro AI desligado e ajuste a **Suavização Manual de 0 a 10** através da interface web para controle total.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>⚙️ TECNOLOGIA E PERFORMANCE</h2>
+                <div class="feature-box">
+                    <div class="feature-item">
+                        <h3>Sensor DPS310 (Baixo Ruído)</h3>
+                        <p>Comparado aos sensores BMP280, o DPS310 oferece **maior precisão** (**2cm de precisão**) e um **ruído muito mais baixo**, traduzindo-se em bipes iniciais mais rápidos.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Processador Dual Core</h3>
+                        <p>Equipado com o microprocessador **Tensilica Xtensa LX6 Dual Core**, garantindo performance para executar a AI e a transmissão BLE simultaneamente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section demo-section">
+            <div class="container">
+                <h2>💻 DEMONSTRAÇÃO INTERATIVA</h2>
+                <p style="font-size: 1.2em; margin-bottom: 30px;">
+                    Configuração via Wi-Fi sem necessidade de aplicativos.
+                </p>
+                <div class="feature-box">
+                    <a href="config.html" target="_blank" style="text-decoration: none; flex: 1;">
+                        <div class="feature-item demo-item">
+                            <h3>CONFIGURAÇÕES PRINCIPAIS</h3>
+                            <p>Simule o ajuste de perfis e filtros.</p>
+                            <span style="display: block; color: var(--primary-color); font-weight: bold;">(Abrir Interface)</span>
+                        </div>
+                    </a>
+                    <a href="estudio_som.html" target="_blank" style="text-decoration: none; flex: 1;">
+                        <div class="feature-item demo-item">
+                            <h3>ESTÚDIO DE SOM</h3>
+                            <p>Ajuste a curva de áudio milissegundo a milissegundo.</p>
+                            <span style="display: block; color: var(--primary-color); font-weight: bold;">(Abrir Estúdio)</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>🔊 CONTROLE DE ÁUDIO</h2>
+                <div class="feature-box">
+                    <div class="feature-item">
+                        <h3>Estúdio de Som Integrado</h3>
+                        <p>Ajuste fino da duração do **beep** e do **silêncio** para cada etapa da razão de subida através da interface Wi-Fi dedicada.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Perfis de Áudio</h3>
+                        <ul>
+                            <li>**Stratos Dinâmico:** Profissional ajustável.</li>
+                            <li>**Clássico Suave:** Curva linear padrão.</li>
+                            <li>**Modo Iniciante:** Limiares mais altos.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- =============================================
+         PÁGINA 1: STRATOSVARIO BOX
+    ============================================== -->
+    <div id="page-box" class="hidden">
+        
+        <div class="nav-bar">
+            <div class="container" style="padding:0; margin:0 auto;">
+                <a onclick="goToHome()" class="btn-back">Voltar para Produtos</a>
+            </div>
+        </div>
+
+        <header class="hero">
+            <div class="container">
+                <h1>Stratosvario_box: A Vanguarda da Decisão em Voo Livre.</h1>
+                <p>Chegou a hora de voar com a precisão que só a inteligência artificial e o baixo ruído podem oferecer.</p>
+                <span class="hero-highlight" style="margin-top: 10px; background-color: #28a745; border: 1px solid white;">0% Ruído. 100% Confiança. Filtro StratosSense AI Ativo.</span>
+                <br>
+                <a href="#buy-box" class="btn-cta" style="margin-top: 20px; display: inline-block;">Comprar Agora</a>
+            </div>
+        </header>
+
+        <!-- FOTOS DO BOX -->
+        <section class="section" style="padding-top: 30px; padding-bottom: 30px; background-color: #fff;">
             <div class="container" style="text-align: center;">
                 <div class="feature-box" style="justify-content: center;">
                     <div style="flex: 0 0 30%; max-width: 250px; margin: 10px; border: 1px solid #ccc; padding: 10px;">
@@ -195,157 +390,249 @@
                 </div>
             </div>
         </section>
+
+        <!-- VIDEO DO BOX -->
         <section class="section" style="padding-top: 20px; padding-bottom: 20px; background-color: #fff;">
-    <div class="container" style="text-align: center;">
-        <h2 style="color: var(--primary-color); border-color: var(--primary-color);">▶️ ASSISTA A DEMONSTRAÇÃO COMPLETA</h2>
-        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background-color: #000; border-radius: 8px; margin-top: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-            <iframe 
-                src="https://www.youtube-nocookie.com/embed/CZtDT3rveF4?autoplay=0&controls=1&showinfo=0&rel=0&modestbranding=1" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-            </iframe>
-        </div>
-        <p style="font-size: 0.9em; color: #555; margin-top: 20px;">Clique na imagem para iniciar o vídeo.</p>
+            <div class="container" style="text-align: center;">
+                <h2 style="color: var(--primary-color);">▶️ ASSISTA A DEMONSTRAÇÃO</h2>
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background-color: #000; border-radius: 8px; margin-top: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <iframe src="https://www.youtube-nocookie.com/embed/CZtDT3rveF4?autoplay=0&controls=1&showinfo=0&rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONCEITO MODULAR BOX -->
+        <section class="section">
+            <div class="container">
+                <h2>📦 DESIGN EXCLUSIVO: CONCEITO MODULAR</h2>
+                <div class="feature-box">
+                    <div class="feature-item" style="flex: 1 1 100%;">
+                        <h3>BOX ULTRAFINO (13mm)</h3>
+                        <p>O Stratosvario_box foi concebido com uma **espessura de apenas 13mm** (11cm C x 8cm L), otimizado para ser **colado com velcro diretamente ao seu celular ou tablet**.</p>
+                        <p style="font-weight: bold; color: var(--primary-color); margin-top: 10px;">
+                            Cria um único aparelho, ultrafino, que ocupa o mínimo de espaço no porta-instrumentos. Garante facilidade na troca da tela e total liberdade para migrar para um aparelho maior.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>🛠️ ESPECIFICAÇÕES TÉCNICAS</h2>
+                <table class="specs-table">
+                    <tr><th>Processador</th><td>Tensilica Xtensa LX6 Dual Core</td></tr>
+                    <tr><th>Sensor Altimétrico</th><td>Adafruit DPS310 (Baixo Ruído, Precisão de 2cm)</td></tr>
+                    <tr><th>Comunicação</th><td>BLE / Wi-Fi</td></tr>
+                    <tr><th>Protocolo</th><td>LK8EX1 (XCTrack, XCSoar)</td></tr>
+                    <tr><th>Dimensões</th><td>8 cm x 11 cm x 13 mm</td></tr> 
+                    <tr><th>Autonomia</th><td>15 - 19 horas contínuas</td></tr>
+                    <tr><th>Carregamento</th><td>USB-C</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <footer class="cta-final" id="buy-box">
+            <div class="container">
+                <h2>🔥 GARANTA O SEU BOX 🔥</h2>
+                <p style="font-size: 2.2em; font-weight: 800; color: #ffe400; margin-bottom: 30px;">R$ 499,00</p>
+                <a href="https://api.whatsapp.com/send?phone=5532999417780&text=Quero%20um%20Stratosvario%20Box" target="_blank" class="btn-cta">COMPRAR VIA WHATSAPP</a>
+            </div>
+        </footer>
     </div>
-</section>
+
+    <!-- =============================================
+         PÁGINA 2: STRATOSVARIO PRO
+    ============================================== -->
+    <div id="page-pro" class="hidden">
+        
+        <div class="nav-bar">
+            <div class="container" style="padding:0; margin:0 auto;">
+                <a onclick="goToHome()" class="btn-back">Voltar para Produtos</a>
+            </div>
+        </div>
+
+        <header class="hero" style="background-color: #333;">
+            <div class="container">
+                <h1>Stratosvario Pro: A Vanguarda da Decisão em Voo Livre.</h1>
+                <p>Chegou a hora de voar com a precisão que só a inteligência artificial e o baixo ruído podem oferecer.</p>
+                <span class="hero-highlight" style="margin-top: 10px; background-color: #007BFF; border: 1px solid white;">0% Ruído. 100% Confiança. Filtro StratosSense AI Ativo.</span>
+                <br>
+                <a href="#buy-pro" class="btn-cta" style="margin-top: 20px; display: inline-block;">Comprar Agora</a>
+            </div>
+        </header>
+
+        <!-- FOTOS DO PRO -->
         <section class="section">
             <div class="container">
-                <h2>🧠 RECURSO CENTRAL: O FILTRO STRATOSSENSE AI & COCHLEAR</h2>
+                <div class="feature-box" style="justify-content: center;">
+                    <div style="flex: 0 0 50%; max-width: 500px; margin: 10px; border: 1px solid #ccc; padding: 10px;">
+                        <img src="stratosvario_pro_foto1.jpg" alt="Stratosvario Pro Completo" style="width: 100%; height: auto; display: block;">
+                        <p style="text-align: center; color: #666; margin-top: 5px;">Sistema All-in-One</p>
+                    </div>
+                </div>
 
-                <p style="font-size: 1.1em; line-height: 1.6;">
-                    Desenhado para eliminar o ruído turbulento de borda de térmica e a trepidação, o Stratosvario_box utiliza um algoritmo de **Inteligência Artificial (AI) proprietário** que atua como um filtro adaptativo.
-                </p>
+                <!-- VIDEO DO PRO -->
+                <div style="text-align: center; margin-top: 40px;">
+                    <h2 style="color: var(--primary-color);">▶️ ASSISTA A DEMONSTRAÇÃO</h2>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background-color: #000; border-radius: 8px; margin-top: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                        <!-- SUBSTITUA ABAIXO PELO SEU CÓDIGO DE INCORPORAÇÃO (IFRAME) -->
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white;">
+                            <p>COLE O IFRAME DO YOUTUBE AQUI NO CÓDIGO</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="margin-top: 50px;">🚀 INTEGRAÇÃO TOTAL</h2>
+                <div class="feature-box">
+                    <div class="feature-item" style="flex: 1 1 100%;">
+                        <h3>TODA A TECNOLOGIA STRATOSVÁRIO + GALAXY TAB A9</h3>
+                        <p>O Stratosvário Pro utiliza toda a tecnologia de ponta da linha (Filtros AI, Sensor DPS310), sendo um aparelho <strong>integrado a um Tablet Galaxy Tab A9</strong>.</p>
+                        
+                        <h4 style="color: var(--primary-color); margin-top: 20px;">📡 LIVE TRACKING E CONECTIVIDADE</h4>
+                        <p>Com entrada dedicada para <strong>chip de operadora</strong>, possibilita o envio da localização e do voo em tempo real (Live Tracking) sem depender do celular.</p>
+
+                        <h4 style="color: var(--primary-color); margin-top: 20px;">🛡️ BOX COM PROTEÇÃO EXTREMA</h4>
+                        <p>Desenvolvido para resistir às demandas do voo de competição e aventura. O Box integrado oferece proteção robusta para o Tablet e para os sensores.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>🛠️ ESPECIFICAÇÕES TÉCNICAS</h2>
+                <table class="specs-table">
+                    <tr><th>Tablet Integrado</th><td>Samsung Galaxy Tab A9 (Incluso)</td></tr>
+                    <tr><th>Conectividade</th><td>4G (Chip SIM), Wi-Fi, Bluetooth, GPS</td></tr>
+                    <tr><th>Sensor Altimétrico</th><td>Adafruit DPS310 (Baixo Ruído, Precisão de 2cm)</td></tr>
+                    <tr><th>Bateria</th><td>Integrada ao sistema (Longa duração)</td></tr>
+                    <tr><th>Live Tracking</th><td>Nativo (Suporte a apps de rastreamento)</td></tr>
+                    <tr><th>Proteção</th><td>Case Robusto de Alta Resistência</td></tr>
+                    <tr><th>Protocolo</th><td>LK8EX1 (XCTrack, XCSoar pré-instalados)</td></tr>
+                </table>
+            </div>
+        </section>
+
+        <footer class="cta-final" id="buy-pro">
+            <div class="container">
+                <h2>🔥 STRATOSVARIO PRO 🔥</h2>
+                <p style="font-size: 1.2em;">Aparelho Completo + Tablet Integrado</p>
+                <p style="font-size: 2.2em; font-weight: 800; color: #ffe400; margin-bottom: 30px;">R$ 1.490,00</p>
+                <a href="https://api.whatsapp.com/send?phone=5532999417780&text=Quero%20um%20Stratosvario%20Pro" target="_blank" class="btn-cta">COMPRAR VIA WHATSAPP</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- =============================================
+         PÁGINA 3: STRATOSVARIO KIT PRO (Renomeado)
+    ============================================== -->
+    <div id="page-kit" class="hidden">
+        
+        <div class="nav-bar">
+            <div class="container" style="padding:0; margin:0 auto;">
+                <a onclick="goToHome()" class="btn-back">Voltar para Produtos</a>
+            </div>
+        </div>
+
+        <header class="hero" style="background-color: #666;">
+            <div class="container">
+                <h1>Stratosvario KIT Pro: A Vanguarda da Decisão em Voo Livre.</h1>
+                <p>Chegou a hora de voar com a precisão que só a inteligência artificial e o baixo ruído podem oferecer.</p>
+                <span class="hero-highlight" style="margin-top: 10px; background-color: #888; border: 1px solid white;">0% Ruído. 100% Confiança. Filtro StratosSense AI Ativo.</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <div class="container">
                 
-                <div class="image-placeholder">
-                     Gráfico Comparando Linha Suja (BMP280) vs. Linha Limpa (DPS310 + AI)
-                </div>
-
-                <div class="feature-box">
-                    <div class="feature-item">
-                        <h3>Filtro Coclear (Zero Fadiga e Alto Desempenho)</h3>
-                        <p>O Filtro Coclear simula o processamento do ouvido humano, concentrando-se na detecção de padrões reais e ignorando as altas frequências da turbulência. **Enquanto variômetros comuns adicionam mais de 1.2 segundos de lag com filtros de software**, nossa abordagem garante uma resposta quase instantânea, com um lag mínimo **inferior a 0.02 segundos**.</p>
-                        <p>Isso significa que você escuta a térmica no momento exato em que a cruza, eliminando a confusão e a fadiga auditiva. **O som do seu vário nunca foi tão limpo e imediato.**</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Adaptação Dinâmica</h3>
-                        <p>O StratosSense AI **analisa a turbulência e a pureza da ascensão no ambiente de voo atual**, adaptando instantaneamente a suavização. Garante máxima sensibilidade no ar calmo e a estabilidade necessária no núcleo da térmica.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Modo Profissional</h3>
-                        <p>Mantenha o filtro AI desligado e ajuste a **Suavização Manual de 0 a 10** (0 = Rápido / 10 = Lento) através da interface web para controle total sobre a filtragem.</p>
+                <div class="feature-box" style="justify-content: center;">
+                    <div style="flex: 0 0 50%; max-width: 500px; margin: 10px; border: 1px solid #ccc; padding: 10px;">
+                        <img src="stratosvario_kit_pro_foto1.jpg" alt="Kit de Montagem" style="width: 100%; height: auto; display: block;">
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <section class="section">
-            <div class="container">
-                <h2>⚙️ TECNOLOGIA E PERFORMANCE</h2>
-
-                <div class="feature-box">
-                    <div class="feature-item">
-                        <h3>CONCEITO BOX MODULAR E ULTRAFINO</h3>
-                        <p>O Stratosvario_box foi concebido com uma **espessura de apenas 13mm** (11cm C x 8cm L), otimizado para ser **colado com velcro diretamente ao seu celular ou tablet**. Isso cria um único aparelho, ultrafino, que ocupa o mínimo de espaço no porta-instrumentos.</p>
-                        <p style="font-weight: bold; color: var(--primary-color);">Garante facilidade na troca da tela (celular/tablet) e total liberdade para migrar para um aparelho maior, sem trocar seu vário.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Sensor DPS310 (Baixo Ruído)</h3>
-                        <p>Comparado aos sensores BMP280, o DPS310 oferece **maior precisão** (**2cm de precisão** contra **10cm** dos filtros usados no mercado) e, crucialmente, um **ruído muito mais baixo**. Isso se traduz em bipes iniciais mais rápidos e informações mais limpas para o Filtro AI processar.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Processador Dual Core</h3>
-                        <p>Equipado com o microprocessador **Tensilica Xtensa LX6 Dual Core**, que oferece o desempenho necessário para executar o Filtro AI, o processamento do sensor DPS310 e a transmissão BLE simultaneamente.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section demo-section">
-            <div class="container">
-                <h2>💻 DEMONSTRAÇÃO INTERATIVA: A SUA CENTRAL DE COMANDO</h2>
-                <p style="font-size: 1.2em; margin-bottom: 30px;">
-                    Experimente a facilidade e o controle de configurar seu Stratosvario_box via Wi-Fi, sem a necessidade de instalar aplicativos.
-                </p>
-                <div class="feature-box">
-                    <a href="config.html" target="_blank" style="text-decoration: none; flex: 1;">
-                        <div class="feature-item demo-item">
-                            <h3>VER CONFIGURAÇÕES PRINCIPAIS</h3>
-                            <p>Simule o ajuste de perfis, gatilhos de subida/descida e a ativação dos Filtros AI e Manual.</p>
-                            <span style="display: block; color: var(--primary-color); font-weight: bold;">(Abrir Interface)</span>
+                <!-- VIDEO DO KIT PRO -->
+                <div style="text-align: center; margin-top: 40px;">
+                    <h2 style="color: var(--primary-color);">▶️ ASSISTA A DEMONSTRAÇÃO</h2>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background-color: #000; border-radius: 8px; margin-top: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                        <!-- SUBSTITUA ABAIXO PELO SEU CÓDIGO DE INCORPORAÇÃO (IFRAME) -->
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white;">
+                            <p>COLE O IFRAME DO YOUTUBE AQUI NO CÓDIGO</p>
                         </div>
-                    </a>
-                    <a href="estudio_som.html" target="_blank" style="text-decoration: none; flex: 1;">
-                        <div class="feature-item demo-item">
-                            <h3>ACESSAR ESTÚDIO DE SOM</h3>
-                            <p>Ajuste milissegundo a milissegundo a curva de áudio para criar um som único e perfeito para você.</p>
-                            <span style="display: block; color: var(--primary-color); font-weight: bold;">(Abrir Estúdio)</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-        <section class="section">
-            <div class="container">
-                <h2>🔊 CONTROLE DE ÁUDIO E CUSTOMIZAÇÃO</h2>
-                <p>O som é a sua segunda visão. Personalize cada detalhe da sua experiência sonora para máxima eficiência no voo.</p>
-
-                <div class="feature-box">
-                    <div class="feature-item">
-                        <h3>Estúdio de Som Integrado</h3>
-                        <p>Ajuste milissegundo a milissegundo a duração do **beep** e do **silêncio** para cada etapa da razão de subida **um nível interpolável** através da interface Wi-Fi dedicada. Nunca mais voe com um vário que você não pode calibrar.</p>
                     </div>
-                    <div class="feature-item">
-                        <h3>Perfis de Áudio Selecionáveis</h3>
-                        <ul>
-                            <li>**Stratos Dinâmico (Recomendado):** Curva profissional ajustável.</li>
-                            <li>**Clássico Suave:** Curva linear padrão para familiarização.</li>
-                            <li>**Modo Iniciante:** Limiares mais altos para evitar sobrecarga de informação.</li>
+                </div>
+
+                <h2 style="margin-top: 50px;">🔧 MONTE SEU EQUIPAMENTO</h2>
+                <div class="feature-box">
+                    <div class="feature-item" style="flex: 1 1 100%;">
+                        <h3>JÁ TEM UM TABLET? ESTE É O SEU KIT.</h3>
+                        <p>Toda a tecnologia do Stratosvario_box, em forma de Kit, indicado para o piloto que já possui o tablet e deseja montar o equipamento com seu próprio dispositivo.</p>
+                        
+                        <h4 style="color: var(--primary-color); margin-top: 20px;">🛠️ FÁCIL MONTAGEM</h4>
+                        <p>Não requer conhecimentos avançados de eletrônica. Basta encaixar o tablet no case projetado e prender com os <strong>8 parafusos inclusos no kit</strong>.</p>
+                        
+                        <ul style="margin-top: 15px; text-align: left;">
+                            <li>Placa Stratosvario com Sensor e AI</li>
+                            <li>Case Traseiro e Dianteiro</li>
+                            <li>Kit de Parafusos (8 un)</li>
+                            <li>Manual de montagem</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section" id="specs">
+        <section class="section">
             <div class="container">
                 <h2>🛠️ ESPECIFICAÇÕES TÉCNICAS</h2>
                 <table class="specs-table">
-                    <tr><th>Processador</th><td>Tensilica Xtensa LX6 Dual Core</td></tr>
+                    <tr><th>Compatibilidade</th><td>Tablets de 8 a 9 polegadas (Verificar modelo)</td></tr>
+                    <tr><th>Itens Inclusos</th><td>Placa mãe, Sensores, Case Completo, Parafusos</td></tr>
                     <tr><th>Sensor Altimétrico</th><td>Adafruit DPS310 (Baixo Ruído, Precisão de 2cm)</td></tr>
-                    <tr><th>Comunicação</th><td>Bluetooth Low Energy (BLE) / Wi-Fi (Configuração Web)</td></tr>
-                    <tr><th>Protocolo de Saída</th><td>LK8EX1 (Compatível com XCTrack, XCSoar, etc.)</td></tr>
-                    <tr><th>Dimensões (LxCxE)</th><td>8 cm x 11 cm x 13 mm (Design Modular Ultrafino)</td></tr> 
-                    <tr><th>Autonomia (BLE Ativo)</th><td>15 - 19 horas contínuas (com bateria de 1100 mAh)</td></tr>
-                    <tr><th>Carregamento</th><td>USB-C (Carregamento Universal 5V)</td></tr>
-                    <tr><th>Modo Repouso</th><td>Consumo Ultrabaixo (Deep Sleep)</td></tr>
+                    <tr><th>Montagem</th><td>Nível Fácil (Apenas chave philips)</td></tr>
+                    <tr><th>Conexão</th><td>Bluetooth Integrado</td></tr>
+                    <tr><th>Material</th><td>ABS de Alta Resistência</td></tr>
                 </table>
             </div>
         </section>
-    </main>
 
-    <footer class="cta-final" id="buy">
-        <div class="container">
-            <h2>🔥 OFERTA DE LANÇAMENTO EXCLUSIVA! 🔥</h2>
-            <p style="font-size: 1.5em; margin-bottom: 20px; font-weight: bold;">
-                De <span style="text-decoration: line-through; opacity: 0.7;">R$ 499,00</span> por apenas:
-            </p>
-            <p style="font-size: 2.2em; font-weight: 800; color: #ffe400; margin-top: -15px; margin-bottom: 30px;">
-                R$ 359,00
-            </p>
+        <footer class="cta-final">
+            <div class="container">
+                <h2>🔥 STRATOSVARIO KIT PRO 🔥</h2>
+                <p style="font-size: 1.2em;">Transforme seu tablet em um instrumento de voo.</p>
+                <p style="font-size: 2.2em; font-weight: 800; color: #ffe400; margin-bottom: 30px;">R$ 699,00</p>
+                <a href="https://api.whatsapp.com/send?phone=5532999417780&text=Quero%20um%20Stratosvario%20KIT%20Pro" target="_blank" class="btn-cta">COMPRAR VIA WHATSAPP</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- SCRIPT DE NAVEGAÇÃO -->
+    <script>
+        function goToProduct(pageId) {
+            // Esconde Home
+            document.getElementById('page-home').classList.add('hidden');
             
-            <p style="font-size: 1.2em; margin-bottom: 30px;">
-                Garanta o seu Stratosvario_box e eleve a precisão do seu voo.
-            </p>
-            
-            <a href="https://api.whatsapp.com/send?phone=5532999417780&text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20o%20meu%20Stratosvario_box%20pelo%20pre%C3%A7o%20de%20lan%C3%A7amento%20de%20R%24359%2C00." target="_blank" class="btn-cta">
-                RESERVAR AGORA VIA WHATSAPP
-            </a>
+            // Esconde todas as páginas de produto
+            document.getElementById('page-box').classList.add('hidden');
+            document.getElementById('page-pro').classList.add('hidden');
+            document.getElementById('page-kit').classList.add('hidden');
 
-            <p style="font-size: 0.9em; margin-top: 15px;">(Fale diretamente com o desenvolvedor: 32 9 9941-7780)</p>
-        </div>
-    </footer>
+            // Mostra a selecionada
+            if(pageId === 'box') document.getElementById('page-box').classList.remove('hidden');
+            if(pageId === 'pro') document.getElementById('page-pro').classList.remove('hidden');
+            if(pageId === 'kit') document.getElementById('page-kit').classList.remove('hidden');
 
+            window.scrollTo(0, 0);
+        }
+
+        function goToHome() {
+            document.getElementById('page-box').classList.add('hidden');
+            document.getElementById('page-pro').classList.add('hidden');
+            document.getElementById('page-kit').classList.add('hidden');
+            document.getElementById('page-home').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+    </script>
 </body>
 </html>
